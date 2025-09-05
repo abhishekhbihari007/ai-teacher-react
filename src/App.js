@@ -3,6 +3,7 @@ import { checkBackendHealth, generateScript, generateSummary, generateTTS } from
 import { processFiles } from './utils/pdfUtils';
 import { createAudioFromBase64 } from './utils/audioUtils';
 import { useRetry } from './hooks/useRetry';
+import ErrorBoundary from './components/ErrorBoundary';
 import MessageBox from './components/MessageBox';
 import LoadingSpinner from './components/LoadingSpinner';
 import FileUpload from './components/FileUpload';
@@ -241,10 +242,11 @@ function App() {
   }, [generatedScript, showMessage]);
 
   return (
-    <div className="antialiased text-gray-800">
-      <MessageBox message={message} />
-      
-      <div className="container">
+    <ErrorBoundary>
+      <div className="antialiased text-gray-800">
+        <MessageBox message={message} />
+        
+        <div className="container">
         <h1 className="text-3xl font-bold text-center mb-6 text-indigo-700">
           AI Teacher Platform
         </h1>
@@ -384,7 +386,7 @@ function App() {
           <LoadingSpinner show={isGeneratingVideo} className="mt-4" />
         </div>
       </div>
-    </div>
+    </ErrorBoundary>
   );
 }
 
