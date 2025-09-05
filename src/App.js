@@ -385,6 +385,7 @@ function App() {
           <VideoPlayer videoUrl={videoUrl} isGenerating={isGeneratingVideo} />
           <LoadingSpinner show={isGeneratingVideo} className="mt-4" />
         </div>
+        </div>
       </div>
     </ErrorBoundary>
   );
