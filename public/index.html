@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Teacher Platform - Full Flow with Simulated Avatar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="root"></div>
+    <script>
+        // Suppress MetaMask and extension errors
+        window.addEventListener('error', function(e) {
+            if (e.message && (
+                e.message.includes('MetaMask') ||
+                e.message.includes('chrome-extension') ||
+                e.message.includes('Failed to connect')
+            )) {
+                e.preventDefault();
+                return false;
+            }
+        });
+        
+        window.addEventListener('unhandledrejection', function(e) {
+            if (e.reason && (
+                e.reason.message && (
+                    e.reason.message.includes('MetaMask') ||
+                    e.reason.message.includes('chrome-extension') ||
+                    e.reason.message.includes('Failed to connect')
+                )
+            )) {
+                e.preventDefault();
+                return false;
+            }
+        });
+    </script>
+</body>
+</html>
